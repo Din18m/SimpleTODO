@@ -1,2 +1,6 @@
 # SimpleTODO
-for MISIS courses
+
+
+## Быстрый старт (Docker)
+```bash
+docker compose up --build
