@@ -6,6 +6,7 @@ import uvicorn
 import dotenv
 
 from app.apps_router import main_router
+from middleware.limit_requests import ApiRateLimitMiddleware
 
 app = FastAPI(title="FastAPI TODO service", version="1.0")
 
@@ -15,6 +16,12 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+)
+
+app.add_middleware(
+    ApiRateLimitMiddleware,
+    limit_per_minute=200,
+    ban_duration=120
 )
 
 
