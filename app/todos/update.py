@@ -8,7 +8,7 @@ from core.todos.update_core import update_todo
 update = APIRouter()
 
 
-@update.patch("/{todo_id}", response_model=TodoOut)
+@update.patch("/todos/{todo_id}", response_model=TodoOut)
 def http_update_todo(todo_id: int, payload: TodoUpdate, db: Session = Depends(get_db)):
     todo = update_todo(db, todo_id, payload)
     if not todo:

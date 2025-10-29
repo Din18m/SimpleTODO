@@ -10,7 +10,7 @@ from core.todos.read_core import list_todos, get_todo
 read = APIRouter()
 
 
-@read.get("/", response_model=List[TodoOut])
+@read.get("/todos", response_model=List[TodoOut])
 def http_list_todos(
         skip: int = Query(0, ge=0),
         limit: int = Query(50, ge=1, le=200),

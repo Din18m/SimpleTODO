@@ -8,6 +8,6 @@ from core.todos.create_core import create_todo
 create = APIRouter()
 
 
-@create.post("/", status_code=201, response_model=TodoOut)
+@create.post("/todos", status_code=201, response_model=TodoOut)
 def http_create_todo(payload: TodoCreate, db: Session = Depends(get_db)):
     return create_todo(db, payload)
